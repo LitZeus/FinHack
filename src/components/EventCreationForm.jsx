@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useWeb3Context } from "./context/Web3Context"; // Adjusted import
+import { useWeb3 } from "../context/Web3Context"; // Correct import
 
 const EventCreationForm = () => {
-  const { contract, account } = useWeb3Context(); // Using Web3 context
+  const { contract, account } = useWeb3(); // Correct hook usage
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
@@ -32,7 +32,7 @@ const EventCreationForm = () => {
       const eventDate = new Date(date).getTime() / 1000; // Convert to Unix timestamp
 
       // Call the smart contract's createEvent function
-      const tx = await contract.methods.createEvent(name, description, location, eventDate).send({ from: account });
+      const tx = await contract.createEvent(name, description, location, eventDate, { from: account });
       await tx.wait(); // Wait for the transaction to be mined
 
       alert(`Event "${name}" created successfully!`);

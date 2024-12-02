@@ -1,7 +1,7 @@
 import React from "react";
-import { useWeb3 } from "./context/web3Context";
-import EventCreationForm from "./components/EventCreationForm";
 import ClaimAttendanceForm from "./components/ClaimAttendanceForm";
+import EventCreationForm from "./components/EventCreationForm";
+import { useWeb3 } from "./context/Web3Context";
 
 const App = () => {
   const { account, connectWallet, contract } = useWeb3();

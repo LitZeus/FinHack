@@ -1,14 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { Web3Provider } from "./context/Web3Context.js"; // Adjust import path
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <Web3Provider>
+      <App />
+    </Web3Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
-
-

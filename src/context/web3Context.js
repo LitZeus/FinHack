@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import POAP_ABI from "../abi/POAP_ABI.json";
 
 const Web3Context = createContext();
