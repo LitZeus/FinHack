@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useWeb3 } from "../context/Web3Context"; // Correct import
+import './EventCreationForm.scss';
 
 const EventCreationForm = () => {
   const { contract, account } = useWeb3(); // Correct hook usage
@@ -45,9 +46,10 @@ const EventCreationForm = () => {
   };
 
   return (
-    <div>
-      <h3>Create an Event</h3>
-      <form onSubmit={handleCreateEvent}>
+    <div className="event-creation-form-wrapper">
+      <form className="event-creation-form" onSubmit={handleCreateEvent}>
+        <h3>Create an Event</h3>
+
         <div>
           <label htmlFor="name">Event Name</label>
           <input
@@ -58,6 +60,7 @@ const EventCreationForm = () => {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
+
         <div>
           <label htmlFor="description">Event Description</label>
           <textarea
@@ -67,6 +70,7 @@ const EventCreationForm = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
+
         <div>
           <label htmlFor="location">Event Location</label>
           <input
@@ -77,6 +81,7 @@ const EventCreationForm = () => {
             onChange={(e) => setLocation(e.target.value)}
           />
         </div>
+
         <div>
           <label htmlFor="date">Event Date</label>
           <input
@@ -86,11 +91,13 @@ const EventCreationForm = () => {
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
+
         <button type="submit" disabled={loading}>
           {loading ? "Creating..." : "Create Event"}
         </button>
+
+        {error && <p className="error-message">{error}</p>}
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };

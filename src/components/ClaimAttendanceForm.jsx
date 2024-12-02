@@ -1,40 +1,48 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import './ClaimAttendanceForm.scss'; // Import the SCSS for styling
 
 const ClaimAttendanceForm = () => {
-  const [eventCode, setEventCode] = useState("");
-  const [userName, setUserName] = useState("");
+  const [eventCode, setEventCode] = useState('');
+  const [userName, setUserName] = useState('');
 
   const handleClaim = (e) => {
     e.preventDefault();
     // Logic to claim attendance
-    console.log("Attendance Claimed:", { eventCode, userName });
+    console.log('Attendance Claimed:', { eventCode, userName });
   };
 
   return (
-    <div>
+    <form className="claim-attendance-form" onSubmit={handleClaim}>
       <h2>Claim Attendance</h2>
-      <form onSubmit={handleClaim}>
-        <div>
-          <label>Event Code:</label>
-          <input
-            type="text"
-            value={eventCode}
-            onChange={(e) => setEventCode(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Your Name:</label>
-          <input
-            type="text"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Claim Attendance</button>
-      </form>
-    </div>
+
+      <div>
+        <label htmlFor="eventCode">Event Code</label>
+        <input
+          type="text"
+          id="eventCode"
+          value={eventCode}
+          onChange={(e) => setEventCode(e.target.value)}
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="userName">Your Name</label>
+        <input
+          type="text"
+          id="userName"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          required
+        />
+      </div>
+
+      <button type="submit">Claim Attendance</button>
+
+      <div className="form-footer">
+        <p>Ensure your information is correct before submitting!</p>
+      </div>
+    </form>
   );
 };
 
